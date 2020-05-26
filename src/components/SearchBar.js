@@ -2,11 +2,21 @@ import React from 'react'
 import {View, TextInput, StyleSheet, Image} from 'react-native'
 import SearhIcon from '../images/searchIcon.png'
 
-const SearchBar = () => {
+const SearchBar = ({term, onSetTerm, onDoneEditing}) => {
     return(
         <View style={styles.backgroundStyle}>
             <Image source={SearhIcon} style={styles.iconStyle}/>
-            <TextInput  style={styles.inputStyle} placeholder="Search"/>
+            <TextInput
+                autoCapitalize="none"
+                autoCorrect={false}  
+                value={term}
+                onChangeText={onSetTerm}
+                //onChangeText={(value) => onSetTerm(value)}
+                style={styles.inputStyle} 
+                placeholder="Search"
+                onEndEditing={onDoneEditing}
+            />
+                
         </View>
     );
 }
